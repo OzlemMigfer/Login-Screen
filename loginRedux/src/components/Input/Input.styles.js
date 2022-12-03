@@ -5,11 +5,15 @@ export default StyleSheet.create({
         padding:5,
         margin:10,
         borderRadius:10,
-        backgroundColor:"white"
+        backgroundColor:"white",
+        flexDirection:'row'
     },
-    error:{
-        color:'red',
-        fontWeight:'bold',
-        fontSize:16
+    input:{
+        flex:1
+    },
+    icon:{
+        alignSelf:'center',
+        fontSize:30,
+        color:'gray'
     }
 });
