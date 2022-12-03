@@ -6,9 +6,11 @@ import Button from "../../components/Button";
 import { Formik } from "formik";
 import usePost from "../../hooks/usePost";
 import Config from "../../../config";
+import {useDispatch} from 'react-redux';
 
 const Login = ({navigation}) => {
     const {data, loading, error, post} = usePost();
+    const dispatch = useDispatch();
 
     function handleLogin(values){
         post(Config.API_AUTH_URL + '/login', values);
@@ -22,6 +24,7 @@ const Login = ({navigation}) => {
         if(data.status == 'Error'){
             Alert.alert('Dükkan', 'Kullanıcı Bulunamadı!');
         }else{
+            dispatch({type: 'SET_USER', payload:{user}});
             navigation.navigate('Product');
         }
     }
@@ -59,3 +62,25 @@ const Login = ({navigation}) => {
 };
 
 export default Login;
+
+const user = {
+    "address":{
+        "geolocation":{
+            "lat":"20.1677","long":"-10.6789"
+        },
+        "city":"el paso",
+        "street":"prospect st",
+        "number":124,
+        "zipcode":"12346-0456"
+    },
+    "id":6,
+    "email":"david_r@gmail.com",
+    "username":"david_r",
+    "password":"3478*#54",
+    "name":{
+        "firstname":"david",
+        "lastname":"russell"
+    },
+    "phone":"1-678-345-9856",
+    __v:0,
+};
